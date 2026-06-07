@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    string s;
+    cin >> s;
+
+    bool a[26] = {false};
+
+    for (char ch : s) {
+        if (ch >= 'a' && ch <= 'z')
+            a[ch - 'a'] = true;
+        else if (ch >= 'A' && ch <= 'Z')
+            a[ch - 'A'] = true;
+    }
+
+    bool pangram = true;
+
+    for (int i = 0; i < 26; i++) {
+        if (!a[i]) {
+            pangram = false;
+            break;
+        }
+    }
+
+    if (pangram)
+        cout << "Pangram";
+    else
+        cout << "Not Pangram";
+
+    return 0;
+}
